@@ -1,38 +1,11 @@
 {
-  "name": "@digitalbazaar/did-io",
-  "version": "1.0.1-0",
+  "name": "@digitalcredentials/did-io",
+  "version": "1.0.1",
   "description": "A library for managing DIDs (Decentralized Identifiers) and associated data.",
-  "homepage": "http://github.com/digitalbazaar/did-io",
-  "author": {
-    "name": "Digital Bazaar, Inc.",
-    "email": "support@digitalbazaar.com",
-    "url": "http://digitalbazaar.com/"
-  },
-  "contributors": [
-    {
-      "name": "Dmitri Zagidulin",
-      "email": "dzagidulin@digitalbazaar.com"
-    },
-    {
-      "name": "Dave Longley",
-      "email": "dlongley@digitalbazaar.com"
-    },
-    {
-      "name": "Manu Sporny",
-      "email": "msporny@digitalbazaar.com"
-    },
-    {
-      "name": "David I. Lehn",
-      "email": "dlehn@digitalbazaar.com"
-    }
-  ],
+  "homepage": "http://github.com/digitalcredentials/did-io",
   "repository": {
     "type": "git",
-    "url": "http://github.com/digitalbazaar/did-io"
-  },
-  "bugs": {
-    "url": "https://github.com/digitalbazaar/did-io/issues",
-    "email": "support@digitalbazaar.com"
+    "url": "http://github.com/digitalcredentials/did-io"
   },
   "license": "BSD-3-Clause",
   "files": [
@@ -51,9 +24,6 @@
       "import": "./dist/esm/index.js"
     },
     "./package.json": "./package.json"
-  },
-  "dependencies": {
-    "@digitalbazaar/lru-memoize": "digitalbazaar/lru-memoize#noesm"
   },
   "devDependencies": {
     "@babel/core": "^7.11.0",
@@ -96,7 +66,7 @@
     "prepare": "npm run build",
     "rebuild": "npm run clear && npm run build",
     "test": "npm run lint && npm run test-node && npm run test-karma",
-    "test-node": "cross-env NODE_ENV=test mocha -r esm --preserve-symlinks -t 30000 -A -R ${REPORTER:-spec} test/**/*.spec.js",
+    "test-node": "cross-env NODE_ENV=test mocha --preserve-symlinks -t 30000 -A -R ${REPORTER:-spec} test/**/*.spec.js",
     "test-karma": "karma start karma.conf.js",
     "lint": "eslint .",
     "preversion": "npm test"
@@ -106,5 +76,8 @@
       "mocha": true,
       "node": true
     }
+  },
+  "dependencies": {
+    "@digitalcredentials/lru-memoize": "^1.0.0"
   }
 }
