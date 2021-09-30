@@ -1,10 +1,9 @@
-# Selective DID Resolver Client _(@digitalbazaar/did-io)_
+# Selective DID Resolver Client _(@digitalcredentials/did-io)_
 
-<!--[![Build status](https://img.shields.io/github/workflow/status/digitalbazaar/did-io/Node.js%20CI)](https://github.com/digitalbazaar/did-io/actions?query=workflow%3A%22Node.js+CI%22)
-[![Coverage status](https://img.shields.io/codecov/c/github/digitalbazaar/did-io)](https://codecov.io/gh/digitalbazaar/did-io)-->
-[![NPM Version](https://img.shields.io/npm/v/@digitalbazaar/did-io.svg)](https://npm.im/@digitalbazaar/did-io)
+[![Node.js CI](https://github.com/digitalcredentials/did-io/workflows/Node.js%20CI/badge.svg)](https://github.com/digitalcredentials/did-io/actions?query=workflow%3A%22Node.js+CI%22)
+[![NPM Version](https://img.shields.io/npm/v/@digitalcredentials/did-io.svg)](https://npm.im/@digitalcredentials/did-io)
 
-> A [DID](https://w3c.github.io/did-core) (Decentralized Identifier) resolution library for Javascript.
+> A [DID](https://w3c.github.io/did-core) (Decentralized Identifier) resolver library for Javascript, TypeScript and ReactNative.
 
 ## Table of Contents
 
@@ -18,6 +17,9 @@
 
 ## Background
 
+(Forked from [`digitalbazaar/did-io` v1.0.0](https://github.com/digitalbazaar/did-io)
+to provide TypeScript compatibility.)
+
 See also (related specs):
 
 * [DID Core v1](https://w3c.github.io/did-core)
@@ -27,21 +29,6 @@ See also (related specs):
 * [Linked Data Proofs](https://w3c-ccg.github.io/ld-proofs/)
 * [Authorization Capabilities (zCaps) for Linked Data](https://w3c-ccg.github.io/zcap-ld/)
 
-### Version Compatibility
-
-`did-io` v1.0 is a major breaking release, see the
-[1.0 CHANGELOG entry](CHANGELOG.md#100---2021-04-06) and
-[Upgrading from v0.8.x to v1.0.0](docs/upgrading-0.8-to-1.0.md) checklist for
-details.
-
-`did-io` v1.0 is compatible with the following libraries:
-
-* `crypto-ld` `>= 5.0.0` (and related crypto suites).
-* `jsonld-signatures` `>= 9.0.0`
-* `@digitalbazaar/did-method-key` `>= 1.0.0`
-* `did-veres-one` `>= 13.0.0` (currently, [branch `v13.x`](https://github.com/veres-one/did-veres-one/pull/56))
-* `vc-js` `>= 7.0` (currently, [branch `v7.x`](https://github.com/digitalbazaar/vc-js/pull/83))
-
 ## Install
 
 Requires Node.js 12+
@@ -49,7 +36,7 @@ Requires Node.js 12+
 To install locally (for development):
 
 ```
-git clone https://github.com/digitalbazaar/did-io.git
+git clone https://github.com/digitalcredentials/did-io.git
 cd did-io
 npm install
 ```
@@ -57,7 +44,7 @@ npm install
 To install as a dependency in another project, add this to your `package.json`:
 
 ```
-"@digitalbazaar/did-io": "^X.x.x"
+"@digitalcredentials/did-io": "^X.x.x"
 ```
 
 ## Usage
@@ -65,13 +52,13 @@ To install as a dependency in another project, add this to your `package.json`:
 ### Supported DID method drivers
 
 * [`did:v1`](https://github.com/veres-one/did-veres-one)
-* [`did:key`](https://github.com/digitalbazaar/did-method-key-js)
+* [`did:key`](https://github.com/digitalbazaar/did-method-key)
 * [`did:web`](https://github.com/interop-alliance/did-web-resolver)
 
 ### Using the CachedResolver to `get()` DID documents and keys
 
 ```js
-import {CachedResolver} from '@digitalbazaar/did-io';
+import {CachedResolver} from '@digitalcredentials/did-io';
 
 // You can pass cache options to the constructor (see Cache Management below)
 const resolver = new CachedResolver({max: 100}); // defaults to 100
@@ -83,7 +70,7 @@ Support for each one has to be enabled explicitly. It uses a
 is loaded via `.use(driver)`.
 
 ```js
-import * as didKey from '@digitalbazaar/did-method-key';
+import * as didKey from '@digitalcredentials/did-method-key';
 import * as didVeresOne from 'did-veres-one';
 
 const didKeyDriver = didKey.driver();
@@ -164,8 +151,8 @@ methodFor({purpose: 'assertionMethod'});
 
 One of the most common uses of DIDs and their public keys is for cryptographic
 operations such as signing and verifying signatures of 
-[Verifiable Credentials](https://github.com/digitalbazaar/vc-js) and 
-[other documents](https://github.com/digitalbazaar/jsonld-signatures), and for 
+[Verifiable Credentials](https://github.com/digitalcredentials/vc-js) and 
+[other documents](https://github.com/digitalcredentials/jsonld-signatures), and for 
 [encrypting and decrypting objects](https://github.com/digitalbazaar/minimal-cipher).
 
 For these and other Linked Data Security operations, a `documentLoader` function
@@ -204,7 +191,7 @@ const documentLoader = async url => {
 
 ### Cache management
 
-CachedResolver uses [`lru-memoize`](https://github.com/digitalbazaar/lru-memoize)
+CachedResolver uses [`lru-memoize`](https://github.com/digitalcredentials/lru-memoize)
 to [memoize](https://en.wikipedia.org/wiki/Memoization) `get()` promises 
 (as opposed to just the results of the operations),
 which helps in high-concurrency use cases. (And that library in turn uses
@@ -230,11 +217,8 @@ PRs accepted.
 If editing the Readme, please conform to the
 [standard-readme](https://github.com/RichardLitt/standard-readme) specification.
 
-## Commercial Support
-
-Commercial support for this library is available upon request from
-Digital Bazaar: support@digitalbazaar.com
 
 ## License
 
-[New BSD License (3-clause)](LICENSE) © Digital Bazaar
+* MIT License - DCC - TypeScript compatibility.
+* New BSD License (3-clause) © 2020-2021 Digital Bazaar - Initial implementation.

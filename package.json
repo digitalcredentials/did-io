@@ -25,6 +25,9 @@
     },
     "./package.json": "./package.json"
   },
+  "dependencies": {
+    "@digitalcredentials/lru-memoize": "^2.1.1"
+  },
   "devDependencies": {
     "@babel/core": "^7.11.0",
     "@babel/plugin-transform-modules-commonjs": "^7.10.4",
@@ -76,8 +79,5 @@
       "mocha": true,
       "node": true
     }
-  },
-  "dependencies": {
-    "@digitalcredentials/lru-memoize": "^1.0.0"
   }
 }
