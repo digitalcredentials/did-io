@@ -1,5 +1,10 @@
 # did-io ChangeLog
 
+## 1.0.1 - 2021-10-01
+
+### Changed
+- Remove use of runtime `esm` compiler, for TypeScript and ReactNative compat.
+
 ## 1.0.0 - 2021-04-06
 
 This version is a major breaking release, based on cumulative experience in
